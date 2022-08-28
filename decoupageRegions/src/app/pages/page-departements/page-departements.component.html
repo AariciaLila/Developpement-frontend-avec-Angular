@@ -1,0 +1,15 @@
+
+<div class="row">
+  <div *ngIf="unDepartementSelectionne">
+    <button class="btn btn-success" routerLink="..">Retour à la liste des régions</button>
+  </div>
+  <div class="card col-md-3 p-0 m-2" *ngFor="let dep of tableauDepartements">
+    <div class="card-header text-center p-2">
+      <h3 class="m-0">{{ dep.nomDep }}</h3>
+    </div>
+    <div class="card-body">
+      <p>Nombre de communes : {{ dep.nombreCommunes }}</p>
+      <p>Nombre d'habitants : {{ dep.populationTotale | number:'1.0':'fr' }}</p>
+    </div>
+  </div>
+</div>

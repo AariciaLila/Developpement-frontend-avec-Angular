@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-header">
+    <span>{{ unProduit.libelle }} </span>
+  </div>
+  <div class="card-body">
+    <p>Quantité : {{ unProduit.quantite }}</p>
+    <p>Poids : {{ unProduit.poids | poids }} </p>
+    <p>Prix : {{ unProduit.prix | currency:"EUR":"symbol":"1.1"}}</p>
+    <p>Nutriscore 
+      <span class="badge"
+      [ngClass]="{
+        'bg-success': unProduit.nutriscore == 'A',
+        'bg-warning' : unProduit.nutriscore == 'B',
+        'bg-secondary': unProduit.nutriscore == 'C',
+        'bg-danger': unProduit.nutriscore == 'D'}"
+      >{{ unProduit.nutriscore }}</span>
+    </p>
+    <button class="btn btn-danger" (click)="gererClic()">Supprimer</button>
+    <button class="btn btn-success ms-2" (click)="inverserProduitPanier()" *ngIf="!unProduit.estDansLePanier">Mettre dans le pannier</button>
+    <button class="btn btn-secondary ms-2" (click)="inverserProduitPanier()" *ngIf="unProduit.estDansLePanier">Retirer du pannier</button>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<p>{{ obtenirNombreProduits() }} produit(s) à acheter pour un montant de {{ calculerTotal(false) | currency:"EUR":"symbol" }} : </p>
+<div class="row p-2">
+  <ng-container *ngFor="let p of produitsService.tabProduits">
+    <app-produit 
+    *ngIf="!p.estDansLePanier"
+    [unProduit]="p" 
+    class="col-md-3 p-0"
+    (demandeSuppression)="supprimerProduit(p)"
+    ></app-produit>
+  </ng-container>
+</div>
+
+<p>{{ obtenirTaillePanier() }} produit(s) dans le panier pour un montant de {{ calculerTotal(true) | currency:"EUR":"symbol" }} : </p>
+<div class="row p-2">
+  <ng-container *ngFor="let p of produitsService.tabProduits">
+    <app-produit 
+    *ngIf="p.estDansLePanier"
+    [unProduit]="p" 
+    class="col-md-3 p-0"
+    (demandeSuppression)="supprimerProduit(p)"
+    ></app-produit>
+  </ng-container>
+</div>

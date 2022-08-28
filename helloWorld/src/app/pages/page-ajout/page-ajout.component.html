@@ -1,0 +1,30 @@
+<form #formAjout="ngForm" (ngSubmit)="ajouterProduit()">
+  <div class="mb-3">
+    <label for="inputLibelle" class="form-label">Libellé</label>
+    <input type="text" class="form-control" id="inputLibelle" name="libelle" [(ngModel)]="libelle" required>
+  </div>
+  <div class="mb-3">
+    <label for="inputQuantite" class="form-label">Quantité</label>
+    <input type="number" class="form-control" id="inputQuantite" [(ngModel)]="quantite" name="quantite" required>
+  </div>
+  <div class="mb-3">
+    <label for="inputPoids" class="form-label">Poids</label>
+    <input type="number" class="form-control" id="inputPoids" [(ngModel)]="poids" name="poids" required>
+  </div>
+  <div class="mb-3">
+    <label for="inputPrix" class="form-label">Prix</label>
+    <input type="number" class="form-control" id="inputPrix" [(ngModel)]="prix" name="prix" required>
+  </div>
+  <div class="mb-3">
+    <label for="selectNutriscore" class="form-label">Nutriscore</label>
+    <select class="form-select" id="selectNutriscore" [(ngModel)]="nutriscore" name="nutriscore" required>
+      <option value="A">A</option>
+      <option value="B">B</option>
+      <option value="C">C</option>
+      <option value="D">D</option>
+    </select>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!formAjout.valid">Ajouter</button>
+</form>
+
+<swal #mySwal title="Bravo !" text="Votre produit a été ajouté :)" icon="success"></swal>

@@ -1,0 +1,21 @@
+
+<div class="row">
+  <div class="card col-md-3 p-0 m-2" *ngFor="let r of tabRegions" (click)="afficherInfosRegion(r)">
+    <div class="card-header text-center p-2">
+      <h3 class="m-0">{{ r.label }}</h3>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="row" *ngIf="nomRegionSelectionnee">
+  <p>Vous avez sélectionné la région {{ nomRegionSelectionnee }}.</p>
+  <p>Voici la liste des départements de cette région : </p>
+
+  <div class="card col-md-3 p-0 m-2" *ngFor="let dep of departementsTrouves" [routerLink]="['/departements']" [queryParams]="{codeDep: dep.code}">
+    <div class="card-header text-center p-2">
+      <h3 class="m-0">{{ dep.label }}</h3>
+    </div>
+  </div>
+</div>
